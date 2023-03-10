@@ -22,7 +22,7 @@ public class arithmeticCalculator
 		
 		String input_first = sc.nextLine();
 		
-		sc.close();
+		//sc.close();
 		
 		if(debug)
 			System.out.println(input_first);
@@ -185,37 +185,56 @@ public class arithmeticCalculator
 		newTree = new Tree_create(5);
 		newTree.root =  newTree.insert(input);
 		
-		Tree_create.printInOrder(newTree.root);
+		//Tree_create.printInOrder(newTree.root);
 		
-		StringBuilder sb = new StringBuilder();
-        sb.append("digraph {\n");
-        //sb.append(buildGraphvizTree(newTree.root));
-        sb.append(Tree_create.buildGraphvizTree(newTree.root));
-        sb.append("}\n");
-        System.out.println(sb.toString());
+		//StringBuilder sb = new StringBuilder();
+//        sb.append("digraph {\n");
+//        //sb.append(buildGraphvizTree(newTree.root));
+//        sb.append(Tree_create.buildGraphvizTree(newTree.root));
+//        sb.append("}\n");
+//        System.out.println(sb.toString());
         
+//        double result = 0;
+//        result = Tree_create.calculate(newTree.root);
+//        System.out.println("The result is " + result);
+	       	
+        	
         double result = 0;
-        result = Tree_create.calculate(newTree.root);
-        System.out.println("The result is " + result);
-        
-//        Path path = Paths.get("/Desktop/Objective Programming/graphs$");
-//        String str = "hello world";
-//        byte[] arr = str.getBytes();
-//        
-//        //try
-//        //{
-//        	
-//        	Files.write(path, arr);
-//        //}
-		
-		//Tree_create.convertToGraphviz(newTree.root);
-		
-		
-		
-		
-		
-		
-		
+        StringBuilder sb = new StringBuilder();
+        //Scanner scanner = new Scanner(System.in);
+    	while(true)
+    	{
+    		char c = sc.nextLine().charAt(0);
+    		//scanner.close();
+        	switch(c)
+        	{
+        		case 'c':
+        		{
+        	        //double result = 0;
+        			System.out.println("\nResult: ");
+        	        result = Tree_create.calculate(newTree.root);
+        	        System.out.println(result+"\n");
+        	        break;
+        		}
+        		
+        		case 'd':
+        		{
+        			//StringBuilder sb = new StringBuilder();
+        	        sb.append("digraph {\n");
+        	        //sb.append(buildGraphvizTree(newTree.root));
+        	        sb.append(Tree_create.buildGraphvizTree(newTree.root));
+        	        sb.append("}\n");
+        	        System.out.println(sb.toString());
+        	        break;
+        		}
+        		default:
+        		{
+        			System.out.println("Elousa\n");
+        	    	//sc.close();
+        			return;
+        		}
+        	}
+    	}		
 
 	}
 }
