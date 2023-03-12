@@ -1,5 +1,6 @@
 package ce326.hw1;
 
+/* Class that represents the leaves of the tree */
 public class tree_node 
 {
 	double data;

@@ -4,7 +4,7 @@ package ce326.hw1;
 public class Tree_create
 {
 	public tree_node root;
-	int nodeCount = 0;
+	int nodeCount = 0;			// an integer that count the nodes
 	String new_input = "";		// Input from User 
 	
 	public Tree_create()		// constructor
@@ -223,8 +223,8 @@ public class Tree_create
         StringBuilder graph = new StringBuilder();
         if (node != null) 
         {
-            int nodeId = nodeCount++;
-            graph.append("\tnode").append(nodeId).append(" [label=\"");
+            int nodeNumber = nodeCount++;
+            graph.append("\tnode").append(nodeNumber).append(" [label=\"");
             if (node.operator != '\0') 
             {
                 graph.append(node.operator);
@@ -237,14 +237,14 @@ public class Tree_create
             
             if (node.left != null) 
             {
-                graph.append("\tnode").append(nodeId).append(" -> ");
+                graph.append("\tnode").append(nodeNumber).append(" -> ");
                 graph.append("node").append(nodeCount).append(";\n");
                 graph.append(buildGraphvizTree(node.left));
             }
             
             if (node.right != null) 
             {
-                graph.append("\tnode").append(nodeId).append(" -> ");
+                graph.append("\tnode").append(nodeNumber).append(" -> ");
                 graph.append("node").append(nodeCount).append(";\n");
                 graph.append(buildGraphvizTree(node.right));
             } 
@@ -283,17 +283,16 @@ public class Tree_create
             case '^':
             	return Math.pow(leftResult, rightResult);
             default:
-                //System.out.println("No operator /n");
         }
-        return 800; // just to return a value for no warning
+        return 0; // just to return a value for no warning
     }
 	 
 	 
-	 
-	 public void Postfix(tree_node node)
+	 String postOrder = "";	// String that contains the postOrder traversal of the tree
+	 public String Postfix(tree_node node)
 	 {		 
 		 if(node == null)
-			 return;
+			 return postOrder;
 		 
 		 Postfix(node.left);
 		 
@@ -301,16 +300,21 @@ public class Tree_create
 		 
 		 if(node.operator != '+' && node.operator != '-' && node.operator != '^' && node.operator != 'x' && node.operator != '/' && node.operator != '*' )
 		 {
-			 if(node.data == Math.floor(node.data))
+			// if the number is integer we want to print only the int part of a double number, so we use Math.floor
+			 if(node.data == Math.floor(node.data))		
 			 {
-				 System.out.print((int)node.data + " ");
+				 postOrder = postOrder + (int)node.data + " ";
 			 }
 			 else
-				 System.out.print(node.data + " ");
+			 {
+				 postOrder = postOrder + node.data + " ";
+			 }
 		 }
 		 else
 		 {
-			 System.out.print(node.operator + " "); 
+			 postOrder = postOrder + node.operator + " ";
 		 }
+		 
+		return postOrder;
 	 } 
 } 

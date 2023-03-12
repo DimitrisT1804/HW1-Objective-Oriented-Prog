@@ -2,7 +2,7 @@ package ce326.hw1;
 
 import java.util.*;
 
-
+/* Class that create the object with all functions and main */
 public class ArithmeticCalculator
 {
 	
@@ -15,13 +15,13 @@ public class ArithmeticCalculator
 		boolean specificChar = true;
 		char first_char, last_char;
 		
-		Scanner sc = new Scanner(System.in);
+		Scanner consoleInput = new Scanner(System.in);
 		
 		System.out.println("Expression: ");
 		
-		String input_first = sc.nextLine();
+		String input_first = consoleInput.nextLine();
 		
-		//sc.close();
+		//consoleInput.close();
 		
 		if(debug)
 			System.out.println(input_first);
@@ -209,14 +209,15 @@ public class ArithmeticCalculator
         StringBuilder graphPrint = new StringBuilder();
     	while(true)
     	{
-    		String c = sc.nextLine();
+    		String c = consoleInput.nextLine();
         	switch(c)
         	{
         		case "-s":
         		{
         			System.out.print("\nPostfix: ");
-        			arithmeticObject.kati();
-        			System.out.print("\n");
+        			//arithmeticObject.kati();
+        			System.out.print(arithmeticObject.toString());
+        			//System.out.print("\n");
         			return;
         		}
         	
@@ -271,9 +272,13 @@ public class ArithmeticCalculator
 		return result;
 	}
 	
-	public void kati()
+	@Override
+	public String toString()
 	{
-		newTree.Postfix(newTree.root);
+		String postOrder;
+		postOrder = newTree.Postfix(newTree.root);
+		
+		return postOrder;
 	}
 		
 }
