@@ -1,4 +1,4 @@
-package HW1_package;
+package ce326.hw1;
 
 public class tree_node 
 {
@@ -11,7 +11,6 @@ public class tree_node
 	{
 		data = initData;
 		operator = initOperator;
-		//parent = initParent;
 	}
 		
 	
